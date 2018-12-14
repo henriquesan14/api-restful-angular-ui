@@ -1,0 +1,12 @@
+<div class="menu" [class.menu-open]="menuAberto">
+     <ul>
+       <li class="d-block d-sm-none"><a href="#">Sair</a></li>
+       <li (click)="toggle2()"><a>Playlists</a>
+        <ul [ngClass]="aberto == true ? 'show-menu' : 'hide-menu'">
+            <li><a routerLink="/">Listar</a></li>
+            <li><a routerLink="/cadastro">Cadastrar</a></li>
+        </ul>
+       </li>
+       
+     </ul>
+</div>

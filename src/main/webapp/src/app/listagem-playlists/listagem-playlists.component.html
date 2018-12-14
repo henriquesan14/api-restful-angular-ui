@@ -1,0 +1,20 @@
+<app-painel-simples titulo="Playlists" col="12" tipo="primary" >
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let playlist of playlists">
+          <td>{{playlist.id}}</td>
+          <td>{{playlist.nome}}</td>
+          <td>{{playlist.descricao}}</td>
+          <td><a class="btn btn-primary btn-sm" routerLink="/">Editar</a></td>
+          <td><a class="btn btn-danger btn-sm" routerLink="/">Excluir</a></td>
+        </tr>
+      </tbody>
+    </table>
+</app-painel-simples>
