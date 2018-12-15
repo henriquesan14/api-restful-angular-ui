@@ -1,0 +1,27 @@
+<app-painel-simples titulo="Nova Playlist" col="12" tipo="default">
+    <form #f="ngForm" (ngSubmit)="onSubmit()" >
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome</label>
+          <input type="text" name="nome" #nome="ngModel" [(ngModel)]="playlist.nome" [class.is-invalid]="!nome.valid && nome.touched" id="nome"   
+          class="form-control"  required />
+          <div *ngIf="!nome.valid && nome.touched" class="text-danger">
+              Informe o nome da playlist
+          </div>
+        </div>
+        <div  class="form-group col-md-6">
+            <label for="descricao">Descrição</label>
+            <input type="text" #descricao="ngModel" [(ngModel)]="playlist.descricao" [class.is-invalid]="!descricao.valid && descricao.touched" id="descricao" name="descricao"
+             class="form-control"   required/>
+             <div *ngIf="!descricao.valid && descricao.touched" class=" text-danger">
+                Informe a descrição da playlist
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" [disabled]="!f.valid" class="btn btn-success">Cadastrar</button>
+          <button class="btn btn-light" routerLink="/">Voltar</button>
+        </div>
+      </div>
+    </form>
+  </app-painel-simples>
+  

@@ -1,0 +1,36 @@
+
+<app-painel-simples titulo="{{title}}" col="12" tipo="default">
+    <form #f="ngForm" (ngSubmit)="onSubmit()" >
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="titulo">Titulo</label>
+          <input type="text" #titulo="ngModel" [class.is-invalid]="!titulo.valid && titulo.touched" id="titulo" name="titulo"  
+          class="form-control" [(ngModel)]="musica.titulo" required />
+          <div *ngIf="!titulo.valid && titulo.touched" class="text-danger">
+              Informe o titulo da música
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="banda">Banda</label>
+            <input type="text" #banda="ngModel" [class.is-invalid]="!banda.valid && banda.touched" id="banda" name="banda"
+             class="form-control"  [(ngModel)]="musica.banda" required/>
+             <div *ngIf="!banda.valid && banda.touched" class=" text-danger">
+                Informe a banda da música
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="nota">Nota</label>
+            <input type="number" #nota="ngModel" [class.is-invalid]="!nota.valid && nota.touched" id="nota" name="nota"
+             class="form-control"  [(ngModel)]="musica.nota" required/>
+             <div *ngIf="!nota.valid && nota.touched" class=" text-danger">
+                Informe a nota da música
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" [disabled]="!f.valid" class="btn btn-success">Cadastrar</button>
+          <button type="button" class="btn btn-light" routerLink="/playlist/{{idPlay}}/musicas" >Voltar</button>
+        </div>
+      </div>
+    </form>
+  </app-painel-simples>
+  

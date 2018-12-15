@@ -1,4 +1,9 @@
-<app-painel-simples titulo="Playlists" col="12" tipo="primary" >
+<app-error-msg></app-error-msg>
+
+<app-painel-simples titulo="Playlists" col="12" tipo="default" >
+  <button class="form-group btn btn-primary" routerLink="/playlist/cadastro">Nova Playlist</button>
+  <br>
+  
     <table class="table table-hover">
       <thead>
         <tr>
@@ -12,9 +17,13 @@
           <td>{{playlist.id}}</td>
           <td>{{playlist.nome}}</td>
           <td>{{playlist.descricao}}</td>
-          <td><a class="btn btn-primary btn-sm" routerLink="/">Editar</a></td>
-          <td><a class="btn btn-danger btn-sm" routerLink="/">Excluir</a></td>
+          <td><button type="button" class="btn btn-primary btn-sm" routerLink="playlist/{{playlist.id}}/musicas" ><i class="fas fa-list"></i></button></td>
+          <td><button type="button" class="btn btn-success btn-sm" routerLink="playlist/editar/{{playlist.id}}" ><i class="fas fa-pencil-alt"></i></button></td>
+          <td><button type="button" class="btn btn-danger btn-sm" (click)="deletaPlaylist(playlist.id)"><i class="fas fa-trash-alt"></i></button></td>
         </tr>
       </tbody>
     </table>
+    <div *ngIf="!existemPlaylist()">
+      <span class="badge badge-info">Nenhuma playlist cadastrada</span>
+    </div>
 </app-painel-simples>

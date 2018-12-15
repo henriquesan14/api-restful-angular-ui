@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-painel-simples',
@@ -10,10 +10,23 @@ export class PainelSimplesComponent implements OnInit {
   @Input() titulo;
   @Input() col;
   @Input() tipo;
+  scroll = false;
 
   constructor() { }
 
   ngOnInit() {
+    if (window.innerWidth < 500) {
+      this.scroll = true;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+      // tslint:disable-next-line:no-unused-expression
+      event.target.innerWidth;
+      if (window.innerWidth < 500) {
+        this.scroll = true;
+      }
   }
 
 }
