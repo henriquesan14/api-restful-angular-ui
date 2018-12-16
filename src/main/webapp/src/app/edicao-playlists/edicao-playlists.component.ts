@@ -12,12 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EdicaoPlaylistsComponent  {
 
   public playlist: Playlist;
+  id: number;
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
   constructor(private playlistService: PlaylistService,
     private activedRouted: ActivatedRoute,
     private router: Router) {
-      this.getPlaylist(this.activedRouted.snapshot.params.id);
+      this.id = this.activedRouted.snapshot.params.id;
+      this.getPlaylist(this.id);
      }
 
   getPlaylist(id: number) {
