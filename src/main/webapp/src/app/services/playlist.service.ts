@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Playlist } from '../interfaces/playlist';
+import { Page } from '../interfaces/page';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class PlaylistService {
 
   constructor(private http: HttpClient) { }
 
-  getListaPlaylists(): Observable<Playlist[]> {
-    const url = `${environment.apiUrl}/playlists`;
-    return this.http.get<Playlist[]>(url);
+  getListaPlaylists(page: number, size: number): Observable<Page> {
+    const url = `${environment.apiUrl}/playlists?page=${page}&size=${size}`;
+    return this.http.get<Page>(url);
   }
 
   getPlaylist(id: number): Observable<Playlist> {

@@ -26,4 +26,9 @@
     <div *ngIf="!existemPlaylist()">
       <span class="badge badge-info">Nenhuma playlist cadastrada</span>
     </div>
+    <div class="text-center">
+      <i *ngIf="page.number" (click)="getListaPlaylists(page.number -1, size)" class="fas fa-angle-double-left"></i>
+      <label [ngClass]="page.number === i? 'atual': ''" class="number" (click)="getListaPlaylists(i, size)" *ngFor="let i of totalPages()">{{i+1}}</label>
+      <i *ngIf="page.number < page.totalPages -1" (click)="getListaPlaylists(page.number +1, size)" class="fas fa-angle-double-right"></i>
+    </div>
 </app-painel-simples>

@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EdicaoPlaylistsComponent  {
 
-  public playlist: Playlist;
+  public playlist: Playlist = <Playlist>{};
   id: number;
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 

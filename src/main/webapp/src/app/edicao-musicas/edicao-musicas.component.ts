@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EdicaoMusicasComponent {
 
-  public musica: Musica;
+  public musica: Musica = <Musica>{};
   id: number;
   idMusica: number;
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
