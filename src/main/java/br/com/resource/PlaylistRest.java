@@ -19,11 +19,11 @@ public class PlaylistRest {
 
     @GetMapping
     public Page<Playlist> listar(@RequestParam(value = "page", defaultValue = "0") int page,
-                                 @RequestParam(value = "size", defaultValue = "10") int size,
-                                 @RequestParam(value = "direction", defaultValue = "ASC") String direction,
-                                 @RequestParam(value = "orderBy", defaultValue = "nome") String orderNy){
-        return service.recuperar(page, size, direction, orderNy);
+                                         @RequestParam(value = "size", defaultValue = "5") int size,
+                                         @RequestParam(value = "nome", defaultValue = "") String nome){
+        return service.recuperar(page, size , nome);
     }
+
 
     @PostMapping
     public Playlist criar(@Valid @RequestBody Playlist playlist){

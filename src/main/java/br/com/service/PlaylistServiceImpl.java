@@ -30,10 +30,11 @@ public class PlaylistServiceImpl implements PlaylistService {
     }
 
     @Transactional(readOnly = true)
-    public Page<Playlist> recuperar(int page, int size, String direction, String orderBy){
-        Pageable pageable = new PageRequest(page,size, Sort.Direction.valueOf(direction), orderBy);
-        return dao.findAll(pageable);
+    public Page<Playlist> recuperar(int page, int size, String nome){
+        Pageable pageable = new PageRequest(page,size);
+        return dao.findAllByNomeContainingIgnoreCaseOrderByNomeAsc(pageable, nome);
     }
+    
 
     @Transactional(readOnly = true)
     public Playlist recuperarPorId(Long id){

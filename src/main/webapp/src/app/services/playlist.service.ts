@@ -12,10 +12,11 @@ export class PlaylistService {
 
   constructor(private http: HttpClient) { }
 
-  getListaPlaylists(page: number, size: number): Observable<Page> {
-    const url = `${environment.apiUrl}/playlists?page=${page}&size=${size}`;
+  getListaPlaylists(page: number, nome: string): Observable<Page> {
+    const url = `${environment.apiUrl}/playlists?page=${page}&nome=${nome}`;
     return this.http.get<Page>(url);
   }
+
 
   getPlaylist(id: number): Observable<Playlist> {
     const url = `${environment.apiUrl}/playlists/${id}`;

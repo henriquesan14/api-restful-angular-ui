@@ -15,7 +15,7 @@ export class ListagemPlaylistsComponent implements OnInit {
   public playlists: Playlist[];
   public page: Page = <Page>{};
   public pageNumb = 0;
-  public size = 5;
+  public nome = '';
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
   constructor(private playlistService: PlaylistService) {
@@ -23,27 +23,31 @@ export class ListagemPlaylistsComponent implements OnInit {
    }
 
    ngOnInit() {
-    this.getListaPlaylists(this.pageNumb, this.size);
+    this.getListaPlaylists(this.pageNumb, this.nome);
   }
 
   totalPages() {
     const pages = [];
-    for( let i = 0; i < this.page.totalPages; i++){
+    for( let i = 0; i < this.page.totalPages; i++) {
       pages.push(i);
     }
     return pages;
   }
 
-  getListaPlaylists(pageNum: number, size: number){
-    this.playlistService.getListaPlaylists(pageNum, size)
+  getListaPlaylists(pageNum: number, nome: string) {
+    this.playlistService.getListaPlaylists(pageNum, nome)
     // tslint:disable-next-line:max-line-length
     .subscribe((page: Page) => {this.page = page; this.playlists = this.page.content; }, () =>{this.errorMsgComponent.setError('Falha ao buscar playlists'); });
   }
 
+
+
   deletaPlaylist(id: number){
     this.playlistService.deletaPlaylist(id)
     // tslint:disable-next-line:max-line-length
-    .subscribe(() => {this.getListaPlaylists(this.page.number, this.size); }, () => {this.errorMsgComponent.setError('Falha ao buscar playlists'); });
+    .subscribe(() => {
+      // tslint:disable-next-line:max-line-length
+      this.page.numberOfElements === 1 ? this.getListaPlaylists( this.page.number - 1, this.nome) : this.getListaPlaylists( this.page.number, this.nome) ;   }, () => {this.errorMsgComponent.setError('Falha ao buscar playlists'); });
   }
 
   existemPlaylist(): boolean {
