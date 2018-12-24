@@ -3,10 +3,14 @@ package br.com.service;
 import br.com.domain.Playlist;
 import br.com.repository.PlaylistDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+
 
 @Service
 @Transactional
@@ -26,8 +30,9 @@ public class PlaylistServiceImpl implements PlaylistService {
     }
 
     @Transactional(readOnly = true)
-    public List<Playlist> recuperar(){
-        return dao.findAll();
+    public Page<Playlist> recuperar(int page, int size, String direction, String orderBy){
+        Pageable pageable = new PageRequest(page,size, Sort.Direction.valueOf(direction), orderBy);
+        return dao.findAll(pageable);
     }
 
     @Transactional(readOnly = true)

@@ -1,13 +1,13 @@
 package br.com.service;
 
 import br.com.domain.Playlist;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
 
 public interface PlaylistService {
 
     Playlist salvar(Playlist playlist);
-    List<Playlist> recuperar();
+    Page<Playlist> recuperar(int page, int size, String direction, String orderBy);
     Playlist recuperarPorId(Long id);
     Playlist editar(Long id,Playlist playlist);
     void apagar(Long id);

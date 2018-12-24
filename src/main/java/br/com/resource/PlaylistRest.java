@@ -2,12 +2,11 @@ package br.com.resource;
 
 import br.com.domain.Playlist;
 import br.com.service.PlaylistService;
-import br.com.service.PlaylistServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @RestController
@@ -19,8 +18,11 @@ public class PlaylistRest {
     private PlaylistService service;
 
     @GetMapping
-    public List<Playlist> listar(){
-        return service.recuperar();
+    public Page<Playlist> listar(@RequestParam(value = "page", defaultValue = "0") int page,
+                                 @RequestParam(value = "size", defaultValue = "10") int size,
+                                 @RequestParam(value = "direction", defaultValue = "ASC") String direction,
+                                 @RequestParam(value = "orderBy", defaultValue = "nome") String orderNy){
+        return service.recuperar(page, size, direction, orderNy);
     }
 
     @PostMapping
