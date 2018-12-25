@@ -34,7 +34,7 @@ public class PlaylistServiceImpl implements PlaylistService {
         Pageable pageable = new PageRequest(page,size);
         return dao.findAllByNomeContainingIgnoreCaseOrderByNomeAsc(pageable, nome);
     }
-    
+
 
     @Transactional(readOnly = true)
     public Playlist recuperarPorId(Long id){
