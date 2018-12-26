@@ -13,9 +13,6 @@ public class Role implements GrantedAuthority {
     @Id
     private String nomeRole;
 
-    @ManyToMany
-    private List<Usuario> usuarios;
-
     public String getNomeRole() {
         return nomeRole;
     }
