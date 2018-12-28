@@ -19,7 +19,6 @@ public class PlaylistRest {
     private PlaylistService service;
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public Page<Playlist> listar(@RequestParam(value = "page", defaultValue = "0") int page,
                                          @RequestParam(value = "size", defaultValue = "5") int size,
                                          @RequestParam(value = "nome", defaultValue = "") String nome){
