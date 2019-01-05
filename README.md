@@ -20,9 +20,9 @@
 >GET:  /playlists/id/musicas
 
 **parâmetro page, default = 0;
-parâmetro size, default = 5;
+parâmetro size, default = 5;**(opcionais)
 
-**Exemplo = /playlists?size=0&size=5
+**Exemplo = /playlists?size=0&size=5**
 
 **Buscar por id:**
 >GET:  /playlists/id
